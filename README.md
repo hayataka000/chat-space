@@ -6,7 +6,7 @@
 
 ### Association
 - has_many :groups, through: :users_groups
-- has_many :groups_users
+- has_many :users_groups
 - has_many :comments
 
 ## groupsテーブル
