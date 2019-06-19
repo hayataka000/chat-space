@@ -1,6 +1,6 @@
 .chat-group-form
   %h1 新規チャットグループ
-  = render 'form', { group: @group }
+  = render 'form', { group: @group } do
     - if @group.errors.any?
       .chat-group-form__errors
         %h2= "#{@group.errors.full_messages.count}件のエラーが発生しました。"
@@ -40,5 +40,5 @@
           </div>
     .chat-group-form__field.clearfix
       .chat-group-form__field--left
-      .chat-group-form__field--right
+      .chat-group-form__field--right 
         = f.submit class: 'chat-group-form__action-btn'
