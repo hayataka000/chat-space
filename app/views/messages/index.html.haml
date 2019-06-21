@@ -2,34 +2,37 @@
 
 .container
   .sidebar
-    .header
-      .header__name useruseruser
-      .header__icon
-        .header__icon-create <i class="fa fa-edit "></i> 
-        .header__icon-edit <i class="fa fa-cog "></i> 
-
-    .groups
-      .groups__group
-        .groups__group--name grooooooooooup
-        .groups__group--comment commeeeeeeeent
-
+    = render 'shared/side_bar' 
   .main
     .main__header
       .main__header--group
-        .main__header--group-name group_name
-        .main__header--group-users users_users
-      .main__header--btn Edit
+        .main__header--group-name 
+          = @group.name
+        .main__header--group-users
+          - @group.group_users.each do |group_user|
+            member :
+            = group_user.user.name
+      .main__header--btn 
+        = link_to edit_group_path(@group.id) do
+          Edit
 
     .main__middle
       .comment
+      - @messages.each do |message|
         .comment__info
-          .comment__info--name AAAAAAAAAA
-          .comment__info--date 2019/06/14
-        .comment__text helloooooooooooow!!!!!!
-
-    .main__form
-      .input__box
-        .input__box--text type a message
-        .input__box--icon <i class="fa fa-picture-o "></i> 
-      .input__btn Send
+          .comment__info--name
+            = message.user.name
+          .comment__info--date
+            = message.created_at.strftime("%Y/%m/%d %H:%M")
+        .comment__text
+          = message.content
+        = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+    .form
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
       

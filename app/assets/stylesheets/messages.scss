@@ -10,6 +10,7 @@
   height: 30px;
   text-align: center;
   line-height: 30px;
+  display: none;
 }
 
 .container {
@@ -44,15 +45,14 @@
 
       &__group {
         width: 260px;
-      
         &--name {
           font-size: 15px;
           padding-bottom: 5px;
         }
-        &--comment {
+      &--comment {
           font-size: 11px;
           padding-bottom: 40px;
-        }
+      }
       }
     }
   }
@@ -92,16 +92,13 @@
         margin-right: 40px;    
       }
     }
-
     &__middle {
     background-color: #fafafa;
     overflow: scroll;
-    display: block;
     height: calc(100vh - 190px);
     padding: 46px 40px;
     }
       .comment {
-        padding-bottom: 40px;
         &__info{
           display: flex;
           margin-bottom: 10px;
@@ -119,39 +116,45 @@
         &__text{
           color: #434a54;
           font-size: 14px;
+          padding-bottom: 40px;
         }
       }
       
-    &__form{
-      background-color: #ddd;
+    .form {
+      background-color: #DDDDDD;
+      box-sizing: border-box;
       height: 90px;
-      display: flex;
-      padding: 20px 40px;
-      line-height: 50px;
-      font-size: 16px;
-
-      .input{      
-        &__box{
-        display: flex;
-        justify-content: space-between;
+      padding: 20px 50px 20px 40px;
+      
+      &__message {
+        border: none;
+        float: left;
         height: 50px;
+        width: calc(100% - 150px);
+      }
+      &__mask {
         background-color: #ffffff;
-        padding: 0px 10px;
-        color: #434a54;
-        width: 100%;
-
-        &--icon {
-        background-color: #ffffff; 
-        font-size: 1.3rem;
+        float: left;
+        height: 50px;
+        padding-right: 10px;
+        &__image {
+          font-size: 20px;
+          line-height: 50px;
+        }
+        .hidden {
+          display: none;
         }
       }
-      &__btn{
+      &__submit {
         background-color: #38aef0;
-        color: #fafafa;
-        padding: 0px 20px;
+        border: none;
+        color: #ffff;
+        float: right;
+        font-size: 16px;
+        height: 50px;
         margin-left: 15px;
+        padding: 0 30px;
       }
-      }
-    }  
+    }
   }
 }
