@@ -79,7 +79,7 @@
       width: calc(100% - 150px);
     }
     &__mask {
-      background-color: $white;
+      background-color: #ffffff;
       float: left;
       height: 50px;
       padding-right: 10px;
@@ -92,9 +92,9 @@
       }
     }
     &__submit {
-      background-color: $light_blue;
+      background-color: #38aef0;
       border: none;
-      color: $white;
+      color: #ffff;
       float: right;
       font-size: 16px;
       height: 50px;
