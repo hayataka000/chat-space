@@ -2,6 +2,15 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  text-decoration: none;
+}
+
+.sidebar :visited {
+  color: #ffffff;
+}
+
+.main__header--btn :visited {
+  color: #38aef0;
 }
 
 .flashbox {
@@ -20,9 +29,10 @@
   .sidebar {
     width: 300px;
     color: #ffffff;
-    font-weight: bold;
+    
 
     .header {
+      font-weight: bold;
       background-color: #253141;
       height: 100px;
       padding: 0px 20px;
@@ -38,6 +48,8 @@
 
     .groups {
       background-color: #2f3e51;
+      color: #ffffff;
+
       display: block;
       overflow: scroll;
       padding: 20px 20px 0px 20px;
