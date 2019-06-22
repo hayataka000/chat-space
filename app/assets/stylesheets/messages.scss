@@ -52,16 +52,16 @@
 
       display: block;
       overflow: scroll;
-      padding: 20px 20px 0px 20px;
+      padding: 0 20px;
       height: calc(100vh - 100px);
 
       &__group {
-        width: 260px;
+        padding: 20px 0 40px;
         &--name {
           font-size: 15px;
           padding-bottom: 5px;
         }
-      &--comment {
+      &--message {
           font-size: 11px;
           padding-bottom: 40px;
       }
