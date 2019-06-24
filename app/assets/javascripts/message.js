@@ -38,7 +38,7 @@ $(function(){
     $('.comments').append(html)
     $('.comments').animate({scrollTop:$('.comments')[0].scrollHeight});
     $("#submit-btn").prop("disabled", false);
-    $('.form__message').val('')
+    $('.new_message')[0].reset();
   })
   .fail(function(){
     alert('error');
