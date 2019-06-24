@@ -22,9 +22,6 @@ $(function(){
     return html;
   }
 
-//   function scroll() {
-//     $('.main__middle').animate({scroll: $('form__message')[0].scrollHeight});
-// }
   $('.new_message').on('submit', function(e){
     e.preventDefault();
     console.log(this)      
@@ -40,9 +37,9 @@ $(function(){
   })
   .done(function(message){
     var html = buildHTML(message);
-    $('.main__middle').append(html)
+    $('.comments').append(html)
+    $('.comments').animate({scrollTop:$('.comments')[0].scrollHeight});
     $('.form__message').val('')
-    scroll()    
   })
   .fail(function(){
     alert('error');

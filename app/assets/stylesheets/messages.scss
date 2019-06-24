@@ -106,32 +106,33 @@
     }
     &__middle {
     background-color: #fafafa;
-    overflow: scroll;
-    height: calc(100vh - 190px);
-    padding: 46px 40px;
-    }
-      .comment {
-        &__info{
-          display: flex;
-          margin-bottom: 10px;
-          &--name {
-            font-size: 16px;
-            font-weight: bold;
+      .comments {
+      overflow: scroll;
+      height: calc(100vh - 190px);
+      padding: 46px 40px;
+        .comment {
+          &__info{
+            display: flex;
+            margin-bottom: 10px;
+            &--name {
+              font-size: 16px;
+              font-weight: bold;
+              color: #434a54;
+            } 
+            &--date {
+              font-size: 12px;
+              color: #999999;
+              margin-left: 10px;
+            }
+          }
+          &__text{
             color: #434a54;
-          } 
-          &--date {
-            font-size: 12px;
-            color: #999999;
-            margin-left: 10px;
+            font-size: 14px;
+            padding-bottom: 40px;
           }
         }
-        &__text{
-          color: #434a54;
-          font-size: 14px;
-          padding-bottom: 40px;
-        }
       }
-      
+    }
     .form {
       background-color: #DDDDDD;
       box-sizing: border-box;
