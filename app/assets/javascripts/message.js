@@ -1,6 +1,5 @@
 $(function(){
   function buildHTML(message){
-    console.log(message);
     var html = `<p>
                   <div class="comment">
                     <div class="comment__info">
@@ -23,8 +22,7 @@ $(function(){
   }
 
   $('.new_message').on('submit', function(e){
-    e.preventDefault();
-    console.log(this)      
+    e.preventDefault();    
     var formData = new FormData(this);
     var url = $(this).attr('action')
     $.ajax({
