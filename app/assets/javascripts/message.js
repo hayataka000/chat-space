@@ -1,10 +1,6 @@
 $(function(){
   function buildHTML(message){
     console.log(message);
-
-    // var content = ${message.content}
-    // var image = ${message.image}
-
     var html = `<p>
                   <div class="comment">
                     <div class="comment__info">
@@ -19,16 +15,16 @@ $(function(){
                     ${message.content}
                     </div>
                     <div class="comment__img">
-                      <a href=${message.image}</a>
+                      <img src=${message.image} alt="" width="400" height="400">
                     </div>
                   </div>
                 </p>`
     return html;
   }
 
-  function scroll() {
-    $('.main__middle').animate({scroll: $('form__message')[0].scrollHeight});
-}
+//   function scroll() {
+//     $('.main__middle').animate({scroll: $('form__message')[0].scrollHeight});
+// }
   $('.new_message').on('submit', function(e){
     e.preventDefault();
     console.log(this)      
