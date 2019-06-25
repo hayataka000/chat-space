@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @group = Group.new
+  end
+
 
   def edit
   end
