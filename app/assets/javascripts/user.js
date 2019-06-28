@@ -27,48 +27,44 @@ function appendUserToGroup(user_id, user_name){
   group_users.append(html);
 }
 
-  $("#group-user-form").on('keyup',function() {
-    isChange = true;
-    var input = $("#group-user-form").val();
-    $.ajax({
-      type: 'GET',
-      url: '/users',
-      data: { keyword: input },
-      dataType: 'json'
-    })
-    .done(function(users) {
-      // console.log(users)
-      search_list.empty();
-        if (users.length !== 0) {
-          users.forEach(function(user){
-            // console.log(users.length)
-            appendUserToSearchList(user);
-          });
-      }
-      else {
-        appendErrMsgToHTML("一致するユーザーが見つかりません");
-      }
-    })
-    .fail(function() {
-      alert('ユーザー検索に失敗しました');
-    })
+$(function() { 
+    $("#group-user-form").on('keyup',function() {
+      isChange = true;
+      var input = $("#group-user-form").val();
+      var user_ids = []
+      $.ajax({
+        type: 'GET',
+        url: '/users',
+        data: { keyword: input, id: user_ids},
+        dataType: 'json'
+      })
+
+      .done(function(users) {
+        search_list.empty();
+          if (users.length !== 0) {
+            users.forEach(function(user){
+              appendUserToSearchList(user);
+            });
+        }
+        else {
+          appendErrMsgToHTML("一致するユーザーが見つかりません");
+        }
+      })
+        .fail(function() {
+          alert('ユーザー検索に失敗しました');
+        });
+      });
   });
 
-  $("#user-search-result").on("click", ".user-search-add", function(){
-    var user_id = $(this).attr("data-user-id");
-    var user_name = $(this).attr("data-user-name");
-    var html =   appendUserToGroup(user_id, user_name);
-    console.log(this)
-    $(this).parent().remove();
-  
-  });
-
-  $("#chat-group-users").on("click", ".user-search-remove", function() {
-    // console.log(this)
-    $(this).parent().remove();
+  $(function() { 
+    $(document).on("click", ".user-search-add", function(){
+      var user_id = $(this).attr("data-user-id");
+      var user_name = $(this).attr("data-user-name");
+      appendUserToGroup(user_id, user_name);
+      $(this).parent().remove();
+    });
+    $(document).on("click", ".user-search-remove", function() {
+      $(this).parent().remove();
+    });
   });
 });
-
-
-
-
