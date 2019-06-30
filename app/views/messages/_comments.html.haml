@@ -1,11 +1,11 @@
 .comments
-  .comment{data: {id: message_id}}
   - @messages.each do |message|
-    .comment__info
-      .comment__info--name
-        = message.user.name
-      .comment__info--date
-        = message.created_at.strftime("%Y/%m/%d %H:%M")
-    .comment__text
-      = message.content
-    = image_tag message.image.url, class: 'lower-message__image' if message.image.present?
+    .comment{"data-message-id": "#{message.id}"}
+      .comment__info
+        .comment__info--name
+          = message.user.name
+        .comment__info--date
+          = message.created_at.strftime("%Y/%m/%d %H:%M")
+      .comment__text
+        = message.content
+      = image_tag message.image.url, class: 'lower-message__image' if message.image.present?

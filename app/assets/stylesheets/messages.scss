@@ -110,6 +110,7 @@
       overflow: scroll;
       height: calc(100vh - 190px);
       padding: 46px 40px;
+      list-style: none;
         .comment {
           &__info{
             display: flex;
