@@ -1,8 +1,5 @@
 $(document).on('turbolinks:load', function() {
   function buildHTML(message){
-  // console.log(this)
-    //これがあると動作しない↓
-    // if (message.content && message.image.url) {
       var html = `<p>
                   <div class="comment", data-message-id='${message.id}'>
                     <div class="comment__info">
@@ -28,7 +25,6 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault(); 
     var formData = new FormData(this);
     var url = $(this).attr('action')
-    // var id = $(this).attr('action')
     $.ajax({
       url: url,
       type: "POST",
@@ -53,7 +49,6 @@ $(function(){
   function reloadMessages(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       var last_message_id = $('.comment:last').data('message-id');
-      console.log(last_message_id)
     $.ajax({
       url: 'api/messages',
       type: 'get',
@@ -70,7 +65,7 @@ $(function(){
       $('.comments').animate({scrollTop:$('.comments')[0].scrollHeight}, 'fast');    
     })
       .fail(function() {
-        console.log('error');
+        alert('自動更新に失敗しました');
       });
     }
   };
