@@ -8,9 +8,9 @@
       .main__header--group
         .main__header--group-name 
           = @group.name
-        .main__header--group-users
+        %ul.main__header--group-users
+          Member :
           - @group.group_users.each do |group_user|
-            member :
             = group_user.user.name
       .main__header--btn 
         = link_to edit_group_path(@group.id) do

@@ -23,11 +23,18 @@
     .chat-group-form__field--left
       = f.label "チャットメンバー", class: 'chat-group-form__label' 
     .chat-group-form__field--right
-      = f.hidden_field :user_ids, name: 'group[user_ids][]', value: "#{current_user.id}" 
-      .chat-group-user.clearfix
-        %p.chat-group-user__name 
-        = current_user.name
-      #chat-group-users
+      #chat-group-users    
+        = f.hidden_field :user_ids, name: 'group[user_ids][]', value: "#{current_user.id}" 
+        .chat-group-user.clearfix
+          %p.chat-group-user__name 
+            = current_user.name
+        - @group.users.each do |user|
+          - unless user.id == current_user.id
+            = f.hidden_field :user_ids, name: 'group[user_ids][]', value: "#{user.id}"
+            .chat-group-user.clearfix
+              %p.chat-group-user__name
+                = user.name
+              .user-search-remove.chat-group-user__btn.chat-group-user__btn--remove.js-remove-btn　削除
 
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
