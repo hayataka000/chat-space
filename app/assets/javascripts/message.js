@@ -45,7 +45,6 @@ $(document).on('turbolinks:load', function() {
   })
 })
 
-
 $(function(){
   setInterval(reloadMessages, 5000)
 });
