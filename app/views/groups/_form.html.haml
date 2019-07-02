@@ -23,7 +23,7 @@
     .chat-group-form__field--left
       = f.label "チャットメンバー", class: 'chat-group-form__label' 
     .chat-group-form__field--right
-      = f.hidden_field :user_ids, name: 'chat_group[user_ids][]', value: '' 
+      = f.hidden_field :user_ids, name: 'group[user_ids][]', value: "#{current_user.id}" 
       .chat-group-user.clearfix
         %p.chat-group-user__name 
         = current_user.name
