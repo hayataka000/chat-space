@@ -48,9 +48,10 @@ $(document).on('turbolinks:load', function() {
 $(function(){
   setInterval(reloadMessages, 5000)
 });
-    function reloadMessages(){
-      if (window.location.href.match(/\/groups\/\d+\/messages/))
-        var last_message_id = $('.comment:last').data('message-id');
+  function reloadMessages(){
+    if (window.location.href.match(/\/groups\/\d+\/messages/)){
+      var last_message_id = $('.comment:last').data('message-id');
+      console.log(last_message_id)
       $.ajax({
         url: 'api/messages',
         type: 'get',
@@ -58,19 +59,19 @@ $(function(){
         data: {id: last_message_id},
       })
       .done(function(messages) {
-       
+        console.log(messages)
         var insertHTML = '';
         messages.forEach(function (message) {
           insertHTML = buildHTML(message);
         })
         if (messages.length !== 0) {
-          $('.comments').append(insertHTML);
-       
+        $('.comments').append(insertHTML);
         $('.comments').animate({scrollTop:$('.comments')[0].scrollHeight}, 'fast');   
-      } 
-    })
-        .fail(function() {
-          alert('自動更新に失敗しました');
-        })
+        }
+      })
+      .fail(function() {
+        alert('自動更新に失敗しました');
+      })
+    }
   }
 });
