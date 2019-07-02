@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function() {
+$(document).on('turbolinks:load', function(){
   function buildHTML(message){
       var html = `<p>
                   <div class="comment", data-message-id='${message.id}'>
@@ -51,7 +51,9 @@ $(function(){
   function reloadMessages(){
     if (window.location.href.match(/\/groups\/\d+\/messages/)){
       var last_message_id = $('.comment:last').data('message-id');
-      console.log(last_message_id)
+      if (last_message_id === undefined){
+        last_message_id = 0
+      }
       $.ajax({
         url: 'api/messages',
         type: 'get',
@@ -59,7 +61,6 @@ $(function(){
         data: {id: last_message_id},
       })
       .done(function(messages) {
-        console.log(messages)
         var insertHTML = '';
         messages.forEach(function (message) {
           insertHTML = buildHTML(message);
